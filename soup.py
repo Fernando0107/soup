@@ -23,11 +23,14 @@ soup = BeautifulSoup(html_content, "html.parser")
 
 
 def Portal():
-
+    print('1. Portal\n')
     address = soup.find("a", {"href": "#myModal"})       #This is the Complete Address of UFM 
+    phone = soup.find("a", {"href": "tel:+50223387700"})       #This is the phone 
+    mail = soup.find("a", {"href": "mailto:inf@ufm.edu"})       #This is the info mail
     #print('\nThis is the title with HTML objects: \n', soup.title, '\n')
     print('Title: \n', soup.title.string, '\n')         #This is the Title 
-    print('Address: \n',address.text)
+    print('Address: \n',address.text, '\n')
+    print('Phone and info email: \n', phone.text, '\n',mail.text, '\n')
 
 print('\n<Fernando González>\n')
 
