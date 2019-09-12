@@ -28,15 +28,18 @@ def Portal():
     address = soup.find("a", {"href": "#myModal"})       #This is the Complete Address of UFM 
     phone = soup.find("a", {"href": "tel:+50223387700"})       #This is the phone 
     mail = soup.find("a", {"href": "mailto:inf@ufm.edu"})       #This is the info mail
-    item = soup.find("table", {"id": "menu-table"})
-    for link in soup.findAll('a', attrs={'href': re.compile("^https://accounts.google.com")}): #for loop to gte the href of UFMail button
+    item = soup.find("table", {"id": "menu-table"})             #This is the items of the menu-table
+    for link in soup.findAll('a', attrs={'href': re.compile("auto&hd=ufm.edu$")}): #for loop to gte the href of UFMail button
         ufmbtn = link.get('href')
-    #print('\nThis is the title with HTML objects: \n', soup.title, '\n')
+    for link in soup.findAll('a', attrs={'href': re.compile("ejemplo%40ufm.edu$")}): # for loop to gte the href of MiU button
+        miubtn = link.get('href')
+    
     print('Title: \n', soup.title.string, '\n')         #This is the Title 
     print('Address: \n',address.text, '\n')
     print('Phone and info email: \n', phone.text, '\n',mail.text, '\n')
     #print('Item of nav menu:',item.text, '\n')
     print('Href of "UFMail" button: \n',ufmbtn, '\n')
+    print('Href of "MiU" button: \n', miubtn, '\n')
 
 print('\n<Fernando González>\n')
 
