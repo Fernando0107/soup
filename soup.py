@@ -2,9 +2,30 @@
 from bs4 import BeautifulSoup
 import requests,sys,csv,json
 import re
+from datetime import date
+from datetime import datetime
+
 
 # This will get the number of function the user will send as an input
 program = sys.argv
+stdout = sys.stdout
+
+currentDT = datetime.now()
+
+print(currentDT.strftime("\nDate of generation: %a, %b %d, %Y, %I:%M:%S %p"))
+
+# ------------------------------------------ Log File --------------------------------------------------------------
+#Write a log file to store the output
+log_file = open("logfile.log", "w")
+
+#This will save the data to the logfile 
+sys.stdout = log_file
+
+print("Test Log file.")
+
+sys.stdout = stdout
+
+log_file.close()
 
 url="http://ufm.edu/Portal"
 
