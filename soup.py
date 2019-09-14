@@ -9,23 +9,7 @@ from datetime import datetime
 # This will get the number of function the user will send as an input
 program = sys.argv
 stdout = sys.stdout
-
 currentDT = datetime.now()
-
-print(currentDT.strftime("\nDate of generation: %a, %b %d, %Y, %I:%M:%S %p"))
-
-# ------------------------------------------ Log File --------------------------------------------------------------
-#Write a log file to store the output
-log_file = open("logfile.log", "w")
-
-#This will save the data to the logfile 
-sys.stdout = log_file
-
-print("Test Log file.")
-
-sys.stdout = stdout
-
-log_file.close()
 
 url="http://ufm.edu/Portal"
 
@@ -42,6 +26,26 @@ soup = BeautifulSoup(html_content, "html.parser")
 
 # print if needed, gets too noisy
 #print(soup.prettify())
+
+
+def Logfile():
+    # ------------------------------------------ Log File --------------------------------------------------------------
+    #Write a log file to store the output
+    log_file = open("logs/logfile.txt", "w")
+
+    for div in soup.find_all("a"):
+
+        #This will save the data to the logfile
+        sys.stdout = log_file
+
+        print(div)
+        print("--------------------------")
+
+        sys.stdout = stdout
+
+        #log_file.close()
+
+    print(currentDT.strftime("\nDate of generation: %a, %b %d, %Y, %I:%M:%S %p\n"))
 
 
 def Portal():
@@ -61,18 +65,43 @@ def Portal():
     #print('Item of nav menu:',item.text, '\n')
     print('Href of "UFMail" button: \n',ufmbtn, '\n')
     print('Href of "MiU" button: \n', miubtn, '\n')
+    print('All properties that have href: \n')
+    i=0
+    for link in soup.find_all("a"):
+        print('href link: ', link.get('href'))
+        print("==================================================================================================================================\n")
+        if(i==30):
+            print("Output exceeds 30 lines, sending output to: logs/logfile.txt.")
+            Logfile()
+            break
+        i+=1
+
+def Estudios():
+    print('\nThis is the Estudios function.\n')
+
+def CS():
+    print('\nThis is the CS function.\n')
+
+def Directorio():
+    print('\nThis is the Directorio function.\n')
+
+
 
 print('\n<Fernando González>\n')
 
 # ------------------------------------------------- Verificador de argumentos ------------------------------------------
 if len(program) == 1:                               #Si solo pasa un argumento (el nombre del programa)
-    print('En teoria se corre todo el código.')
+    Portal()
+    Estudios()
+    CS()
+    Directorio()
 elif program[1] == 1 or program[1] =='1':           #Si manda 1, entonces se va a la funcion del protal
     Portal()
-
-'''
-for div in soup.find_all("div"):
-    print(div)
-    print("--------------------------")
-
-'''
+elif program[1] == 2 or program[1] =='2':
+    Estudios()
+elif program[1] == 3 or program[1] == '3':
+    CS()
+elif program[1] == 4 or program[1] == '4':
+    Directorio()
+else:
+    print('\nError! You need to send a valid argument.\n')
