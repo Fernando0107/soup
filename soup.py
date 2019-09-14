@@ -27,7 +27,6 @@ soup = BeautifulSoup(html_content, "html.parser")
 # print if needed, gets too noisy
 #print(soup.prettify())
 
-
 def Logfile():
     # ------------------------------------------ Log File --------------------------------------------------------------
     #Write a log file to store the output
@@ -39,7 +38,7 @@ def Logfile():
         sys.stdout = log_file
 
         print(div)
-        print("--------------------------")
+        print("==================================================================================================================================\n")
 
         sys.stdout = stdout
 
@@ -54,9 +53,9 @@ def Portal():
     phone = soup.find("a", {"href": "tel:+50223387700"})       #This is the phone 
     mail = soup.find("a", {"href": "mailto:inf@ufm.edu"})       #This is the info mail
     item = soup.find("table", {"id": "menu-table"})             #This is the items of the menu-table
-    for link in soup.findAll('a', attrs={'href': re.compile("auto&hd=ufm.edu$")}): #for loop to gte the href of UFMail button
+    for link in soup.findAll('a', attrs={'href': re.compile("auto&hd=ufm.edu$")}): #for loop to get the href of UFMail button
         ufmbtn = link.get('href')
-    for link in soup.findAll('a', attrs={'href': re.compile("ejemplo%40ufm.edu$")}): # for loop to gte the href of MiU button
+    for link in soup.findAll('a', attrs={'href': re.compile("ejemplo%40ufm.edu$")}): # for loop to get the href of MiU button
         miubtn = link.get('href')
     
     print('Title: \n', soup.title.string, '\n')         #This is the Title 
@@ -97,11 +96,11 @@ if len(program) == 1:                               #Si solo pasa un argumento (
     Directorio()
 elif program[1] == 1 or program[1] =='1':           #Si manda 1, entonces se va a la funcion del protal
     Portal()
-elif program[1] == 2 or program[1] =='2':
+elif program[1] == 2 or program[1] =='2':           #Si manda 2, entonces se va a la funcion de Estudios
     Estudios()
-elif program[1] == 3 or program[1] == '3':
+elif program[1] == 3 or program[1] == '3':          #Si manda 3, entonces se va a la funcion de CS
     CS()
-elif program[1] == 4 or program[1] == '4':
+elif program[1] == 4 or program[1] == '4':          #Si manda 4, entonces se va a la funcion de Directorio
     Directorio()
 else:
     print('\nError! You need to send a valid argument.\n')
