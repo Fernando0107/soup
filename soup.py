@@ -4,6 +4,7 @@ import requests,sys,csv,json
 import re
 from datetime import date
 from datetime import datetime
+import string
 
 
 # This will get the number of function the user will send as an input
@@ -57,16 +58,18 @@ def Portal():
     phone = soup.find("a", {"href": "tel:+50223387700"})       #This is the phone 
     mail = soup.find("a", {"href": "mailto:inf@ufm.edu"})       #This is the info mail
     item = soup.find("table", {"id": "menu-table"})             #This is the items of the menu-table
+    s = item.text
+    h = " ".join(s.split())
     for link in soup.findAll('a', attrs={'href': re.compile("auto&hd=ufm.edu$")}): #for loop to get the href of UFMail button
         ufmbtn = link.get('href')
     for link in soup.findAll('a', attrs={'href': re.compile("ejemplo%40ufm.edu$")}): # for loop to get the href of MiU button
         miubtn = link.get('href')
-    
+
     
     print('Title: \n', soup.title.string, '\n')         #This is the Title 
     print('Address: \n',address.text, '\n')
     print('Phone and info email: \n', phone.text, '\n',mail.text, '\n')
-    #print('Item of nav menu:',item.text, '\n')
+    print('Item of nav menu:',h, '\n')
     print('Href of "UFMail" button: \n',ufmbtn, '\n')
     print('Href of "MiU" button: \n', miubtn, '\n')
     print('All properties that have href: \n')
