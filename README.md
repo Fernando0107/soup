@@ -202,8 +202,8 @@ using ["http://ufm.edu/Portal"](http://ufm.edu/Portal)
 ## 2. Estudios
 using ["http://ufm.edu/Estudios"](http://ufm.edu/Estudios)
 
-- [ ] now navigate to  /Estudios (better if you obtain href from the DOM)
-- [ ] display all items from "topmenu" (8 in total)
+- [x] now navigate to  /Estudios (better if you obtain href from the DOM)
+- [x] display all items from "topmenu" (8 in total)
 - [ ] display ALL "Estudios" (Doctorados/Maestrias/Posgrados/Licenciaturas/Baccalaureus)
 - [ ] display from "leftbar" all &lt;li> items (4 in total)
 - [ ] get and display all available social media with its links (href) "class=social pull-right"

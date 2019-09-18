@@ -112,10 +112,6 @@ def Portal():
         Sec()
     print(Fore.BLUE + 'All a in UFM webpage: \n', Style.RESET_ALL, a, '\n')
 
-
-
-    
-
 def Estudios():
 
     es = soup.find("a", {"href": "/Estudios"})
