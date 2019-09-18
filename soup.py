@@ -2,10 +2,10 @@
 from bs4 import BeautifulSoup
 import requests,sys,csv,json
 import re
-from datetime import date
 from datetime import datetime
 import string
-
+from colorama import Fore, Back, Style
+from selenium import webdriver
 
 # This will get the number of function the user will send as an input
 program = sys.argv
@@ -32,6 +32,28 @@ def Separador():
 
     print("==================================================================================================================================\n")
 
+def Sec():
+    print("-----------------------------------------------------------------------------------------------------------------------------------\n")
+
+def Nav(i):
+
+    url = "http://ufm.edu/Portal/"
+    url2 = url + i.text
+
+    try:
+        html_content = requests.get(url2).text
+        print(f"Succes! Now you are in {url2}\n")
+    except:
+        print(f"unable to get {url}")
+        sys.exit(1)
+
+    souper = BeautifulSoup(html_content, "html.parser")
+
+    return souper
+
+
+
+
 def Logfile():
     # ------------------------------------------ Log File --------------------------------------------------------------
     #Write a log file to store the output
@@ -43,16 +65,17 @@ def Logfile():
         sys.stdout = log_file
 
         print(div)
-        Separador()
+        Sec()
 
         sys.stdout = stdout
 
         #log_file.close()
 
-    print(currentDT.strftime("\nDate of generation: %a, %b %d, %Y, %I:%M:%S %p\n"))
-
+    print(currentDT.strftime(Fore.CYAN +"\nDate of generation: %a, %b %d, %Y, %I:%M:%S %p\n"))
+    Separador()
 
 def Portal():
+    Separador()
     print('1. Portal\n')
     address = soup.find("a", {"href": "#myModal"})       #This is the Complete Address of UFM 
     phone = soup.find("a", {"href": "tel:+50223387700"})       #This is the phone 
@@ -64,32 +87,47 @@ def Portal():
         ufmbtn = link.get('href')
     for link in soup.findAll('a', attrs={'href': re.compile("ejemplo%40ufm.edu$")}): # for loop to get the href of MiU button
         miubtn = link.get('href')
+    a = len(soup.findAll('a'))
 
     
-    print('Title: \n', soup.title.string, '\n')         #This is the Title 
-    print('Address: \n',address.text, '\n')
-    print('Phone and info email: \n', phone.text, '\n',mail.text, '\n')
-    print('Item of nav menu:',h, '\n')
-    print('Href of "UFMail" button: \n',ufmbtn, '\n')
-    print('Href of "MiU" button: \n', miubtn, '\n')
-    print('All properties that have href: \n')
+    print(Fore.BLUE + 'Title: \n',Style.RESET_ALL, soup.title.string, '\n')         #This is the Title 
+    print(Fore.BLUE + 'Address: \n', Style.RESET_ALL, address.text, '\n')
+    print(Fore.BLUE +'Phone and info email: \n',Style.RESET_ALL, phone.text, '\n',mail.text, '\n')
+    print(Fore.BLUE + 'Item of nav menu:', Style.RESET_ALL, h, '\n')
+    print(Fore.BLUE +'Href of "UFMail" button: \n',Style.RESET_ALL,ufmbtn, '\n')
+    print(Fore.BLUE + 'Href of "MiU" button: \n', Style.RESET_ALL, miubtn, '\n')
+    print(Fore.BLUE + 'All properties that have href: \n')
     i=0
     for link in soup.find_all("a"):
-        print('href link: ', link.get('href'))
-        Separador()
+        print(Fore.GREEN + 'href link: ', Style.RESET_ALL, link.get('href'))
+        Sec()
         if(i==30):
-            print("Output exceeds 30 lines, sending output to: logs/logfile.txt.")
+            print(Fore.RED +"Output exceeds 30 lines, sending output to: logs/logfile.txt.")
             Logfile()
             break
         i+=1
     for img in soup.findAll('img'):
         
-        print('Image link: ', img.get('src'))
-        Separador()
+        print(Fore.GREEN + 'Image link: ', Style.RESET_ALL, img.get('src'))
+        Sec()
+    print(Fore.BLUE + 'All a in UFM webpage: \n', Style.RESET_ALL, a, '\n')
+
+
+
     
 
 def Estudios():
-    print('\nThis is the Estudios function.\n')
+
+    es = soup.find("a", {"href": "/Estudios"})
+    souper = Nav(es)
+
+    #This is the items of the menu-table
+    item = souper.find("div", {"id": "topmenu"})
+    st = item.text
+    l = " ".join(st.split())
+    print(Fore.BLUE + 'Item of nav menu:', Style.RESET_ALL, l, '\n')
+
+
 
 def CS():
     print('\nThis is the CS function.\n')
@@ -103,11 +141,10 @@ print('\n<Fernando González>\n')
 
 # ------------------------------------------------- Verificador de argumentos ------------------------------------------
 if len(program) == 1:                               #Si solo pasa un argumento (el nombre del programa)
-    #Portal()
-    #Estudios()
+    Portal()
+    Estudios()
     #CS()
     #Directorio()
-    pass
 elif program[1] == 1 or program[1] =='1':           #Si manda 1, entonces se va a la funcion del protal
     Portal()
 elif program[1] == 2 or program[1] =='2':           #Si manda 2, entonces se va a la funcion de Estudios
