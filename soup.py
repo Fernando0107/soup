@@ -37,7 +37,7 @@ def Sec():
 
 def Nav(i):
 
-    url = "http://ufm.edu/Portal/"
+    url = "http://ufm.edu/"
     url2 = url + i.text
 
     try:
@@ -80,7 +80,7 @@ def Logfile():
 
         sys.stdout = stdout
 
-        #log_file.close()
+    log_file.close()
 
     print(currentDT.strftime(Fore.CYAN +"\nDate of generation: %a, %b %d, %Y, %I:%M:%S %p\n"))
     Separador()
@@ -125,30 +125,30 @@ def Portal():
 
 def Estudios():
 
-    es = soup.find("a", {"href": "/Estudios"})
-    souper = Nav(es)
+    #es = soup.find("a", {"href": "/Estudios"})
+    es = "https://ufm.edu/Estudios"
+    souper = NavCS(es)
 
     #This is the items of the menu-table
     item = souper.find("div", {"id": "topmenu"})
     st = item.text
     l = " ".join(st.split())
-    links = ["http://biblioteca.ufm.edu", "http://newmedia.ufm.edu","/Directorio", "/Calendario_Acad%C3%A9mico_2019"]
-    
-    '''
-    tag_li = souper.find_all('li')
-    print(tag_li)
-    for tag in tag_li:
-        print (tag.text)
-    '''
+    est = souper.find_all("div", {"class": "estudios"})
+
+    lii = souper.find("div", {"class": "leftbar"}).find_all("li")
     
     print(Fore.BLUE + 'Item of nav menu:', Style.RESET_ALL, l, '\n')
-    for i in range(len(links)):
-        x = links[i]
-        #print(x)
-        mal = soup.find("a", {"href": x})
-        print(Fore.BLUE + 'li: \n', Style.RESET_ALL, mal.text, '\n')
+    
+    for i in range(len(est)):
+        print(Fore.BLUE + 'Estudios: \n',
+              Style.RESET_ALL, est[i].get_text(), '\n')
         Sec()
 
+    for i in range(len(lii)):
+        print(Fore.BLUE + 'List items: \n',
+              Style.RESET_ALL, lii[i].get_text(), '\n')
+        Sec()
+    
 
 def CS():
     u = "https://fce.ufm.edu/carrera/cs/"
@@ -171,7 +171,7 @@ print('\n<Fernando González>\n')
 if len(program) == 1:                               #Si solo pasa un argumento (el nombre del programa)
     Portal()
     Estudios()
-    #CS()
+    CS()
     #Directorio()
 elif program[1] == 1 or program[1] =='1':           #Si manda 1, entonces se va a la funcion del protal
     Portal()
