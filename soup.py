@@ -199,7 +199,7 @@ def CS():
 
 def Directorio():
     Separador()
-    print('2. Estudios\n')
+    print('4. Directorio\n')
 
     di = "https://www.ufm.edu/Directorio"
     souperi = NavCS(di)
