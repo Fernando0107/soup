@@ -210,7 +210,7 @@ def Directorio():
         lis.append(ma)
         
     lis.sort()
-    
+    print(Fore.BLUE + 'Emails: \n', Style.RESET_ALL)
     print(Fore.RED + "Sending output to: logs/directorio_emails.txt.", Style.RESET_ALL)
     log_f = open("logs/directorio_emails.txt", "w+")
 
@@ -229,6 +229,14 @@ def Directorio():
     print(currentDT.strftime(Fore.CYAN + "\nDate of generation: %a, %b %d, %Y, %I:%M:%S %p\n"), Style.RESET_ALL)
     Separador()
 
+    arr = ["a", "e", "i", "o", "u"]
+    j = 0
+    for i in range(len(lis)):
+        if lis[i][7] in arr:
+            j+=1
+
+
+    print(Fore.BLUE + 'Emails that starts with a vowel: \n', Style.RESET_ALL, j)
 
 print(Fore.CYAN + '\n<Fernando González>\n', Style.RESET_ALL)
 
@@ -237,7 +245,7 @@ if len(program) == 1:                               #Si solo pasa un argumento (
     Portal()
     Estudios()
     CS()
-    #Directorio()
+    Directorio()
 elif program[1] == 1 or program[1] =='1':           #Si manda 1, entonces se va a la funcion del portal
     Portal()
 elif program[1] == 2 or program[1] =='2':           #Si manda 2, entonces se va a la funcion de Estudios
