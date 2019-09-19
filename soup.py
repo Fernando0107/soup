@@ -124,33 +124,40 @@ def Portal():
     print(Fore.BLUE + 'All a in UFM webpage: \n', Style.RESET_ALL, a, '\n')
 
 def Estudios():
-
+    Separador()
+    print('2. Estudios\n')
     #es = soup.find("a", {"href": "/Estudios"})
     es = "https://ufm.edu/Estudios"
     souper = NavCS(es)
 
-    #This is the items of the menu-table
+    #This is the items of the top menu
     item = souper.find("div", {"id": "topmenu"})
     st = item.text
     l = " ".join(st.split())
     est = souper.find_all("div", {"class": "estudios"})
-
     lii = souper.find("div", {"class": "leftbar"}).find_all("li")
+    sm = souper.find("div", {"class": "social pull-right"}).find_all("a")
     
     print(Fore.BLUE + 'Item of nav menu:', Style.RESET_ALL, l, '\n')
-    
+    Separador()
     for i in range(len(est)):
         print(Fore.BLUE + 'Estudios: \n',
               Style.RESET_ALL, est[i].get_text(), '\n')
         Sec()
-
+    Separador()
     for i in range(len(lii)):
         print(Fore.BLUE + 'List items: \n',
               Style.RESET_ALL, lii[i].get_text(), '\n')
         Sec()
-    
+    Separador()
+    for i in range(len(sm)):
+        print(Fore.BLUE + 'Social Media: \n',
+              Style.RESET_ALL, sm[i]['href'], '\n')
+        Sec()
 
 def CS():
+    Separador()
+    print('3. CS\n')
     u = "https://fce.ufm.edu/carrera/cs/"
     soupers = NavCS(u)
     acs = len(soupers.findAll('a'))
