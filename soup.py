@@ -64,11 +64,10 @@ def NavCS(url):
 
     return souper
 
-
 def Logfile():
     # ------------------------------------------ Log File --------------------------------------------------------------
     #Write a log file to store the output
-    log_file = open("logs/logfile.txt", "w")
+    log_file = open("logs/logfile.txt", "w+")
 
     for div in soup.find_all("a"):
 
@@ -83,6 +82,23 @@ def Logfile():
     log_file.close()
 
     print(currentDT.strftime(Fore.CYAN +"\nDate of generation: %a, %b %d, %Y, %I:%M:%S %p\n"))
+    Separador()
+
+def Csv():
+
+    a = soup.find_all("a")
+
+    csv_file = open("logs/extra_as.csv", "w+")
+
+    w = csv.writer(csv_file)
+
+    for i in a:
+
+        brain = ['Text: '+i.get_text(),' href: '+i['href']]
+        w.writerow(brain)
+
+    csv_file.close()
+    print(currentDT.strftime(Fore.CYAN +"\nDate of generation: %a, %b %d, %Y, %I:%M:%S %p\n"),Style.RESET_ALL)
     Separador()
 
 def Portal():
@@ -122,6 +138,9 @@ def Portal():
         print(Fore.GREEN + 'Image link: ', Style.RESET_ALL, img.get('src'))
         Sec()
     print(Fore.BLUE + 'All a in UFM webpage: \n', Style.RESET_ALL, a, '\n')
+    print(Fore.CYAN + "Creating CSV file...", Style.RESET_ALL, '\n')
+    print(Fore.RED + "Output exceeds 30 lines, sending output to: logs/extra_as.txt.", Style.RESET_ALL)
+    Csv()
 
 def Estudios():
     Separador()
@@ -181,8 +200,6 @@ def CS():
 
 def Directorio():
     print('\nThis is the Directorio function.\n')
-
-
 
 print('\n<Fernando González>\n')
 
