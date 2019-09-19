@@ -5,7 +5,6 @@ import re
 from datetime import datetime
 import string
 from colorama import Fore, Back, Style
-from selenium import webdriver
 
 # This will get the number of function the user will send as an input
 program = sys.argv

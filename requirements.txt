@@ -1,4 +1,7 @@
 bs4
 requests
-csv
-json
+#csv
+#json
+datetime
+#string
+colorama
