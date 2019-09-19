@@ -198,7 +198,36 @@ def CS():
     print(Fore.BLUE + 'All div in CS webpage: \n', Style.RESET_ALL, divcs, '\n')
 
 def Directorio():
-    print('\nThis is the Directorio function.\n')
+    Separador()
+    print('2. Estudios\n')
+
+    di = "https://www.ufm.edu/Directorio"
+    souperi = NavCS(di)
+    lis = []
+    
+    for link in souperi.findAll('a', attrs={'href': re.compile("^mailto")}):
+        ma = link['href']
+        lis.append(ma)
+        
+    lis.sort()
+    
+    print(Fore.RED + "Sending output to: logs/directorio_emails.txt.", Style.RESET_ALL)
+    log_f = open("logs/directorio_emails.txt", "w+")
+
+    for i in range(len(lis)):
+
+        #This will save the data to the logfile
+        sys.stdout = log_f
+
+        print(lis[i])
+        Sec()
+
+        sys.stdout = stdout
+
+    log_f.close()
+
+    print(currentDT.strftime(Fore.CYAN + "\nDate of generation: %a, %b %d, %Y, %I:%M:%S %p\n"), Style.RESET_ALL)
+    Separador()
 
 
 print(Fore.CYAN + '\n<Fernando González>\n', Style.RESET_ALL)
@@ -209,7 +238,7 @@ if len(program) == 1:                               #Si solo pasa un argumento (
     Estudios()
     CS()
     #Directorio()
-elif program[1] == 1 or program[1] =='1':           #Si manda 1, entonces se va a la funcion del protal
+elif program[1] == 1 or program[1] =='1':           #Si manda 1, entonces se va a la funcion del portal
     Portal()
 elif program[1] == 2 or program[1] =='2':           #Si manda 2, entonces se va a la funcion de Estudios
     Estudios()
