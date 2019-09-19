@@ -51,7 +51,18 @@ def Nav(i):
 
     return souper
 
+def NavCS(url):
 
+    try:
+        html_content = requests.get(url).text
+        print(f"Succes! Now you are in {url}\n")
+    except:
+        print(f"unable to get {url}")
+        sys.exit(1)
+
+    souper = BeautifulSoup(html_content, "html.parser")
+
+    return souper
 
 
 def Logfile():
@@ -121,12 +132,33 @@ def Estudios():
     item = souper.find("div", {"id": "topmenu"})
     st = item.text
     l = " ".join(st.split())
+    links = ["http://biblioteca.ufm.edu", "http://newmedia.ufm.edu","/Directorio", "/Calendario_Acad%C3%A9mico_2019"]
+    
+    '''
+    tag_li = souper.find_all('li')
+    print(tag_li)
+    for tag in tag_li:
+        print (tag.text)
+    '''
+    
     print(Fore.BLUE + 'Item of nav menu:', Style.RESET_ALL, l, '\n')
-
+    for i in range(len(links)):
+        x = links[i]
+        #print(x)
+        mal = soup.find("a", {"href": x})
+        print(Fore.BLUE + 'li: \n', Style.RESET_ALL, mal.text, '\n')
+        Sec()
 
 
 def CS():
-    print('\nThis is the CS function.\n')
+    u = "https://fce.ufm.edu/carrera/cs/"
+    soupers = NavCS(u)
+    acs = len(soupers.findAll('a'))
+    divcs = len(soupers.findAll('div'))
+
+    print(Fore.BLUE + 'Title Computer Science: \n', Style.RESET_ALL, soupers.title.string, '\n')
+    print(Fore.BLUE + 'All a in CS webpage: \n', Style.RESET_ALL, acs, '\n')
+    print(Fore.BLUE + 'All div in CS webpage: \n', Style.RESET_ALL, divcs, '\n')
 
 def Directorio():
     print('\nThis is the Directorio function.\n')

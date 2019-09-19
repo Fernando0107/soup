@@ -205,20 +205,20 @@ using ["http://ufm.edu/Estudios"](http://ufm.edu/Estudios)
 - [x] now navigate to  /Estudios (better if you obtain href from the DOM)
 - [x] display all items from "topmenu" (8 in total)
 - [ ] display ALL "Estudios" (Doctorados/Maestrias/Posgrados/Licenciaturas/Baccalaureus)
-- [ ] display from "leftbar" all &lt;li> items (4 in total)
+- [X] display from "leftbar" all &lt;li> items (4 in total)
 - [ ] get and display all available social media with its links (href) "class=social pull-right"
-- [ ] count all &lt;a> (just display the count)
+- [X] count all &lt;a> (just display the count)
 
 
 ## 3. CS
 using ["https://fce.ufm.edu/carrera/cs/"](https://fce.ufm.edu/carrera/cs/)
 
-- [ ] GET title
+- [X] GET title
 - [ ] GET and display the href
 - [ ] Download the "FACULTAD de CIENCIAS ECONOMICAS" logo. (you need to obtain the link dynamically)
 - [ ] GET following &lt;meta>: "title", "description" ("og")
-- [ ] count all &lt;a> (just display the count)
-- [ ] count all &lt;div> (just display the count)
+- [X] count all &lt;a> (just display the count)
+- [x] count all &lt;div> (just display the count)
 
 
 ## 4. Directorio
