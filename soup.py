@@ -201,7 +201,8 @@ def CS():
 def Directorio():
     print('\nThis is the Directorio function.\n')
 
-print('\n<Fernando González>\n')
+
+print(Fore.CYAN + '\n<Fernando González>\n', Style.RESET_ALL)
 
 # ------------------------------------------------- Verificador de argumentos ------------------------------------------
 if len(program) == 1:                               #Si solo pasa un argumento (el nombre del programa)

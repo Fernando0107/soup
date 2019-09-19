@@ -263,8 +263,8 @@ Text:  Tradiciones, href: /Tradiciones_UFM
 Text: Tarifario 2019, href: /Tarifario_2019
 Text: Valores, href: /Valores
 Text: Virtudes, href: /Virtudes
-Text: UFMail, href: https://accounts.google.com/o/oauth2/auth?response_type=code&access_type=online&client_id=753553871119-42rgfeitjhbrq449nj1906662pupr1j0.apps.googleusercontent.com&redirect_uri=https%3A%2F%2Fwww.ufm.edu%2Fautenticacion%2Foauth2_init.php&state=01dca3e5cfd9020bae2d9125f1463266&scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email&approval_prompt=auto&hd=ufm.edu
-Text: MiU, href: https://accounts.google.com/o/oauth2/auth?response_type=code&access_type=offline&client_id=514583071787-mcsoogoa3kb7v56n7r78obvusehc81br.apps.googleusercontent.com&redirect_uri=https%3A%2F%2Fmiu.ufm.edu%2Findex.php&state=8f2bc3f029e54ce89401894b5afa5fae&scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email&approval_prompt=force&hd=ufm.edu&login_hint=ejemplo%40ufm.edu
+Text: UFMail, href: https://accounts.google.com/o/oauth2/auth?response_type=code&access_type=online&client_id=753553871119-42rgfeitjhbrq449nj1906662pupr1j0.apps.googleusercontent.com&redirect_uri=https%3A%2F%2Fwww.ufm.edu%2Fautenticacion%2Foauth2_init.php&state=f08ef1009bc730ad9dcaeb5c56dd248a&scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email&approval_prompt=auto&hd=ufm.edu
+Text: MiU, href: https://accounts.google.com/o/oauth2/auth?response_type=code&access_type=offline&client_id=514583071787-mcsoogoa3kb7v56n7r78obvusehc81br.apps.googleusercontent.com&redirect_uri=https%3A%2F%2Fmiu.ufm.edu%2Findex.php&state=53e19e2a4d646f7bc45992826b40c1d8&scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email&approval_prompt=force&hd=ufm.edu&login_hint=ejemplo%40ufm.edu
 Text: UFM Key Projects, href: https://www.ufm.edu/english/
 Text: Friends of UFM, href: https://foufm.org
 Text: Donaciones, href: https://www.ufm.edu/checkout/donaciones/
@@ -274,12 +274,12 @@ Text: Alumni, href: https://alumni.ufm.edu/
 Text: Campus Madrid, href: https://madrid.ufm.edu/?referer=ufm
 Text:  Redes Sociales, href: /Redes_Sociales
 Text: El Amigo de la Marro, href: https://noticias.ufm.edu
+Text: , href: https://noticias.ufm.edu/stephanie-falla-entre-las-50-mujeres-mas-desafiantes-de-centro-america/
 Text: , href: https://noticias.ufm.edu/medicina-ufm-celebro-xv-aniversario-del-centro-de-salud-barbara/
 Text: , href: https://noticias.ufm.edu/participa-en-la-alumni-fest-en-la-ufm/
-Text: , href: https://noticias.ufm.edu/nixon-sucuc-gano-tercer-lugar-en-concurso-internacional-de-ensayo/
+Text: Stephanie Falla entre las 50 mujeres más desafiantes de Centro América, href: https://noticias.ufm.edu/stephanie-falla-entre-las-50-mujeres-mas-desafiantes-de-centro-america/
 Text: Medicina UFM celebró XV aniversario del Centro de Salud Bárbara, href: https://noticias.ufm.edu/medicina-ufm-celebro-xv-aniversario-del-centro-de-salud-barbara/
 Text: ¡Participa en el Alumni Fest UFM!, href: https://noticias.ufm.edu/participa-en-la-alumni-fest-en-la-ufm/
-Text: Nixon Sucuc ganó tercer lugar en concurso internacional de ensayo, href: https://noticias.ufm.edu/nixon-sucuc-gano-tercer-lugar-en-concurso-internacional-de-ensayo/
 Text: Eventos, href: https://asomate.ufm.edu
 Text: , href: https://asomate.ufm.edu/event/curso-libre-conceptos-clave-pensamiento-tocqueville/
 Text: , href: https://asomate.ufm.edu/event/las-mujeres-arte-guatemalteco/
