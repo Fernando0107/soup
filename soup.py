@@ -162,8 +162,20 @@ def CS():
     soupers = NavCS(u)
     acs = len(soupers.findAll('a'))
     divcs = len(soupers.findAll('div'))
+    image = soupers.find("img", {"class": "fl-photo-img wp-image-500 size-full"})
+    im = image['src']
+    r = requests.get(im, allow_redirects=True)
+    meta = soupers.find("meta",  property="og:title")
+    meta2 = soupers.find("meta",  property="og:description")
 
     print(Fore.BLUE + 'Title Computer Science: \n', Style.RESET_ALL, soupers.title.string, '\n')
+    print(Fore.CYAN + "Downloading Facultad de Ciencias Economicas logo...\n",
+          Style.RESET_ALL)
+    open('Facultad_de_Ciencias_Economicas.png', 'wb').write(r.content)
+    print(Fore.CYAN + "Done!\n", Style.RESET_ALL)
+    print(Fore.BLUE + 'Meta Title: \n ', Style.RESET_ALL, meta["content"] if meta else "No meta title given", '\n')
+    print(Fore.BLUE + 'Meta description: \n ', Style.RESET_ALL,
+          meta2["content"] if meta2 else "No meta description given", '\n')
     print(Fore.BLUE + 'All a in CS webpage: \n', Style.RESET_ALL, acs, '\n')
     print(Fore.BLUE + 'All div in CS webpage: \n', Style.RESET_ALL, divcs, '\n')
 
