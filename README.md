@@ -324,7 +324,7 @@ docker push fernando7/soup:v2.0
 
 To pull my container:
 
-docker pull fernando7/soup:v0.0
+docker pull fernando7/soup:v2.0
 
 
 
