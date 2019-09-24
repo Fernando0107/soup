@@ -309,6 +309,25 @@ In order to start your project:
 ## Usage Dockerfile
 ```bash
 Put your Docker build/run/etc commands here
+
+To build my dockerfile image: 
+
+docker build -t fernando7/soup:v0.0
+
+To run my Docker file: 
+
+docker run -it --rm fernando7/soup:v0.0 
+
+To push the container to my Docker Hub: 
+
+docker push fernando7/soup:v0.0  
+
+To pull my container:
+
+docker pull fernando7/soup:v0.0
+
+
+
 ```
 
 ---
