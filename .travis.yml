@@ -1,0 +1,14 @@
+language: python
+
+#Python Version
+python:
+
+  - "3.7"
+
+# Install dependencies and libraries 
+install:
+
+  - pip install -r requirements.txt
+
+# command to run tests
+script: pytest
