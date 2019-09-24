@@ -34,21 +34,6 @@ def Separador():
 def Sec():
     print("-----------------------------------------------------------------------------------------------------------------------------------\n")
 
-def Nav(i):
-
-    url = "http://ufm.edu/"
-    url2 = url + i.text
-
-    try:
-        html_content = requests.get(url2).text
-        print(f"Succes! Now you are in {url2}\n")
-    except:
-        print(f"unable to get {url}")
-        sys.exit(1)
-
-    souper = BeautifulSoup(html_content, "html.parser")
-
-    return souper
 
 def NavCS(url):
 
@@ -229,16 +214,24 @@ def Directorio():
     print(currentDT.strftime(Fore.CYAN + "\nDate of generation: %a, %b %d, %Y, %I:%M:%S %p\n"), Style.RESET_ALL)
     Separador()
 
-    arr = ["a", "e", "i", "o", "u"]
+    vow = ["a", "e", "i", "o", "u"]
     j = 0
     for i in range(len(lis)):
-        if lis[i][7] in arr:
+        if lis[i][7] in vow:
             j+=1
 
+    print(Fore.BLUE + 'Emails that starts with a vowel: \n', Style.RESET_ALL, j, '\n')
 
-    print(Fore.BLUE + 'Emails that starts with a vowel: \n', Style.RESET_ALL, j)
+    print(Fore.BLUE + 'Address: \n', Style.RESET_ALL)
 
-print(Fore.CYAN + '\n<Fernando González>\n', Style.RESET_ALL)
+    addr = souperi.find("table", {"class": "tabla ancho100"}).find_all("tr")
+
+    print(addr[4].get_text())
+
+    
+
+
+print(Fore.CYAN + '\n----------------- <Fernando González> -----------------\n', Style.RESET_ALL)
 
 # ------------------------------------------------- Verificador de argumentos ------------------------------------------
 if len(program) == 1:                               #Si solo pasa un argumento (el nombre del programa)

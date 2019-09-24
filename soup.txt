@@ -1,0 +1,11 @@
+Repo:
+
+https://github.com/Fernando0107/soup
+
+git tag:
+
+v1.1
+
+docker tag:
+
+v0.0
